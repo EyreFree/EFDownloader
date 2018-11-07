@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1214BFC92168D10E003A329C /* PROJECT_DIR in Resources */ = {isa = PBXBuildFile; fileRef = 1214BFC82168D10E003A329C /* PROJECT_DIR */; };
 		1214BFCB2168DD0B003A329C /* EFPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214BFCA2168DD0B003A329C /* EFPath.swift */; };
 		122B82902168AD8700C1BF79 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B828F2168AD8700C1BF79 /* URL+.swift */; };
+		125602752192B90000A02F4C /* PROJECT_DIR in Resources */ = {isa = PBXBuildFile; fileRef = 125602732192B8E200A02F4C /* PROJECT_DIR */; };
 		1264F8B521762354007EC77E /* JSON+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264F8B421762354007EC77E /* JSON+.swift */; };
 		1264F8BB217627D6007EC77E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1264F8B9217627D6007EC77E /* Info.plist */; };
 		1288FB452167BA0700853F0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288FB442167BA0700853F0A /* AppDelegate.swift */; };
@@ -23,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1214BFC82168D10E003A329C /* PROJECT_DIR */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PROJECT_DIR; path = ../PROJECT_DIR; sourceTree = "<group>"; };
 		1214BFCA2168DD0B003A329C /* EFPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFPath.swift; sourceTree = "<group>"; };
 		122B828F2168AD8700C1BF79 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		125602732192B8E200A02F4C /* PROJECT_DIR */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PROJECT_DIR; sourceTree = "<group>"; };
 		1264F8B421762354007EC77E /* JSON+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+.swift"; sourceTree = "<group>"; };
 		1264F8B9217627D6007EC77E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1264F8BA217627D6007EC77E /* EFDownloader.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = EFDownloader.entitlements; sourceTree = "<group>"; };
@@ -76,11 +76,11 @@
 		1264F8BC21762808007EC77E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				125602732192B8E200A02F4C /* PROJECT_DIR */,
 				1264F8BA217627D6007EC77E /* EFDownloader.entitlements */,
 				1264F8B9217627D6007EC77E /* Info.plist */,
 				1288FB482167BA0800853F0A /* Assets.xcassets */,
 				1288FB4A2167BA0800853F0A /* Main.storyboard */,
-				1214BFC82168D10E003A329C /* PROJECT_DIR */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -194,9 +194,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125602752192B90000A02F4C /* PROJECT_DIR in Resources */,
 				1264F8BB217627D6007EC77E /* Info.plist in Resources */,
 				1288FB492167BA0800853F0A /* Assets.xcassets in Resources */,
-				1214BFC92168D10E003A329C /* PROJECT_DIR in Resources */,
 				1288FB4C2167BA0800853F0A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR;\ncd EFDownloader;\necho \"$PROJECT_DIR\" > PROJECT_DIR;";
+			shellScript = "cd $PROJECT_DIR;\ncd EFDownloader;\nrm PROJECT_DIR;\necho \"$PROJECT_DIR\" > PROJECT_DIR;\n";
 		};
 		AD0FD07E49DA7C3BA7B3ADFB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -242,7 +242,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-EFDownloader/Pods-EFDownloader-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-EFDownloader/Pods-EFDownloader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -255,7 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EFDownloader/Pods-EFDownloader-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EFDownloader/Pods-EFDownloader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
