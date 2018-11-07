@@ -9,7 +9,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'EFDownloader' do
-    pod 'Alamofire', '4.7.1'                # 网络
+    pod 'Alamofire', '4.7.3'                # 网络
     pod 'SDWebImage', '4.4.2'               # 图片
     pod 'SwiftyJSON', '4.2.0'               # JSON
 end

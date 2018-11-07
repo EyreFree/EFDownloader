@@ -11,7 +11,6 @@
 		122B82902168AD8700C1BF79 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B828F2168AD8700C1BF79 /* URL+.swift */; };
 		125602752192B90000A02F4C /* PROJECT_DIR in Resources */ = {isa = PBXBuildFile; fileRef = 125602732192B8E200A02F4C /* PROJECT_DIR */; };
 		1264F8B521762354007EC77E /* JSON+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264F8B421762354007EC77E /* JSON+.swift */; };
-		1264F8BB217627D6007EC77E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1264F8B9217627D6007EC77E /* Info.plist */; };
 		1288FB452167BA0700853F0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288FB442167BA0700853F0A /* AppDelegate.swift */; };
 		1288FB472167BA0700853F0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288FB462167BA0700853F0A /* ViewController.swift */; };
 		1288FB492167BA0800853F0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1288FB482167BA0800853F0A /* Assets.xcassets */; };
@@ -163,11 +162,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = EyreFree;
 				TargetAttributes = {
 					1288FB402167BA0700853F0A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -195,7 +195,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				125602752192B90000A02F4C /* PROJECT_DIR in Resources */,
-				1264F8BB217627D6007EC77E /* Info.plist in Resources */,
 				1288FB492167BA0800853F0A /* Assets.xcassets in Resources */,
 				1288FB4C2167BA0800853F0A /* Main.storyboard in Resources */,
 			);
@@ -347,6 +346,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -400,6 +400,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -419,7 +420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eyrefree.EFDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -439,7 +440,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eyrefree.EFDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
