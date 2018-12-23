@@ -51,17 +51,18 @@ class EFKuaiShou: NSObject {
     }
 
     func getVideos() {
-        EFNetwork.shared.request("https://live.kuaishou.com/profile/\(id)") { [weak self] (data) in
+        EFNetwork.shared.request("http://live.kuaishou.com/profile/\(id)") { [weak self] (data) in
             if let strongSelf = self {
                 guard let data = data else {
                     return
                 }
                 let htmlString = String(data: data, encoding: String.Encoding.utf8)
                 if let jsonString = htmlString?
-                    .components(separatedBy: "window.VUE_MODEL_INIT_STATE['profileGallery']=")
+                    .components(separatedBy: "window.VUE_MODEL_INIT_STATE['profileModel']=")
                     .last?
                     .components(separatedBy: "</script>")
                     .first?
+                    .clean()
                     .removeSuffix(string: ";") {
                     let json = JSON(parseJSON: jsonString)
                     let list = EFKuaiShouList(json: json["profile"]["tabDatas"]["open"])
@@ -89,7 +90,7 @@ class EFKuaiShou: NSObject {
             "principalId": id,
             "privacy": "public"
         ]
-        EFNetwork.shared.request("https://live.kuaishou.com/feed/profile", method: .post, parameters: parameters) { [weak self] (data) in
+        EFNetwork.shared.request("http://live.kuaishou.com/feed/profile", method: .post, parameters: parameters) { [weak self] (data) in
             if let strongSelf = self {
                 guard let data = data else {
                     return
@@ -128,10 +129,12 @@ class EFKuaiShou: NSObject {
         for dataItem in dataItemList {
             let fileName: String = "\(dataItem.timestamp?.bigClean() ?? "")_\(dataItem.caption?.bigClean().cutSuffix(count: 10) ?? "")_\(dataItem.musicName?.bigClean().cutSuffix(count: 10) ?? "").mp4"
             let fileNameFull: String = "\(dataItem.timestamp?.bigClean() ?? "")_\(dataItem.caption?.bigClean() ?? "")_\(dataItem.musicName?.bigClean() ?? "").mp4"
+            let fileNameID: String = "\(dataItem.timestamp?.bigClean() ?? "未知").mp4"
             if let videoURL = dataItem.playUrl {
                 let pathString = EFPath.shared.project + "/Download/KuaiShou/\(id)/\(fileName)"
                 let pathFullString = EFPath.shared.project + "/Download/KuaiShou/\(id)/\(fileNameFull)"
-                if pathString.isExistAtPath() || pathFullString.isExistAtPath() {
+                let pathIDString = EFPath.shared.project + "/Download/KuaiShou/\(id)/\(fileNameID)"
+                if pathString.isExistAtPath() || pathFullString.isExistAtPath() || pathIDString.isExistAtPath() {
                     print("\(id) 进度：\(finishCount + 1)/\(effectCount)" + "，文件已存在，忽略下载任务")
                     finishCount += 1
                     finishCheck(successCount: finishCount, failCount: failCount, totalCount: effectCount)
@@ -145,7 +148,7 @@ class EFKuaiShou: NSObject {
                                 print("\(self.id) 进度：\(finishCount + 1)/\(effectCount)" + "，任务失败，即将重试...")
                                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
                                     if let _ = self {
-                                        videoURL.downloadVideo(savePath: pathString) { [weak self] (err) in
+                                        videoURL.downloadVideo(savePath: pathIDString) { [weak self] (err) in
                                             if let _ = self {
                                                 downloadFinish(err: err, downloadCount: downloadCount + 1)
                                             }
@@ -159,7 +162,7 @@ class EFKuaiShou: NSObject {
                         }
                         finishCheck(successCount: finishCount, failCount: failCount, totalCount: effectCount)
                     }
-                    videoURL.downloadVideo(savePath: pathString) { [weak self] (err) in
+                    videoURL.downloadVideo(savePath: pathIDString) { [weak self] (err) in
                         if let _ = self {
                             downloadFinish(err: err)
                         }
